@@ -4,6 +4,7 @@ let express = require("express");
 const productosRepo = require("./repos/reposProductos");
 let app = express();
 let reposProductos = require("./repos/reposProductos");
+let cors = require("cors");
 
 //usamos el objetp express Router
 let router = express.Router();
@@ -11,6 +12,9 @@ let router = express.Router();
 //se agrega middleware para JSON parsing in request de los objetos
 
 app.use(express.json());
+
+//activando CORS para los requests
+app.use(cors());
 
 //creamos GET para retornar el listado de productos
 router.get("/", function (req, res, next) {
