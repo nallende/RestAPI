@@ -1,34 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <title>Document</title>
-</head>
+    <head>
 
-<body>
+        <!-- Basic Page Needs
+        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+        <meta charset="utf-8">
+        <title>Your page title here :)</title>
+        <meta name="description" content="">
+        <meta name="author" content="">
+      
+        <!-- Mobile Specific Metas
+        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+      
+        <!-- FONT
+        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+        <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+      
+        <!-- CSS
+        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/skeleton.css">
+      
+        <!-- Favicon
+        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+        <link rel="icon" type="image/png" href="images/favicon.png">
+      
+      </head>
+
+ <body>  
 
     <div class="container mt-4">
         <button class="btn btn-primary mt-2" id="getAll">Get All Products</button>
-        <button class="btn btn-primary mt-2" id="getById">Get By Id</button>
         <button class="btn btn-primary mt-2" id="Post">Add/Post Product</button>
         <button class="btn btn-primary mt-2" id="Put">Update</button>
         <button class="btn btn-primary mt-2" id="Delete">Delete</button>
 
     </div>
+</br>
+
+<div>
+    
+        <form>
+            <div class="row">
+              <div class="six columns">
+                <input class="u-half-width" type="text" placeholder="Id" id="Get By Id"> 
+                </label>
+                <input type="submit" value="Enviar Id" id="getById" input>
+          </form>
+
+</div>
 
     <script>
 
-        document.getElementById('formulario').onsubmit = () => {
+   
+        getAll.onclick = () => {
 
-            let titulo = document.getElementById('title').value;
-            let precio = document.getElementById('price').value;
-            alert('Nuevo producto agregado: \n Título: ' + titulo + '\n Precio: $' + precio)
-        };
+        fetch("http://localhost:8080/api").then(resp => resp.json()).then(data => {
+        console.log(data)
+        })
+       }
+
+         getById.onclick = () => {
+        fetch("http://localhost:8080/api/2").then(resp => resp.json()).then(data => {
+            console.log(data)
+        })
+       }
+
+
+
+
+
 
     </script>
 </body>
