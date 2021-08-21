@@ -68,11 +68,38 @@
         })
        }
 
+        Post.onclick = () => { 
 
+        fetch("http://localhost:8080/api/", {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            product: {
+                name: "Producto2",
+                imageUrl: "https://i.ibb.co/QdJwgmp/brown-cowboy.png",
+                price: 12345,
+            }
+          })
+       }).then((resp) =>resp.json()).then(data=>{
+                    console.log(data);
+    });
+ }
 
+      Put.onclick = () => {
+                fetch("http://localhost:8080/api/4").then(resp => resp.json()).then(data => {
+                    console.log(data)
+                })
+            }
 
+            Delete.onclick = () => {
+                fetch("http://localhost:8080/api/4").then(resp => resp.json()).then(data => {
+                    console.log(data)
+                })
+            }
 
-
+     
     </script>
 </body>
 
