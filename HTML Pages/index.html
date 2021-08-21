@@ -80,12 +80,12 @@
                 name: "Producto2",
                 imageUrl: "https://i.ibb.co/QdJwgmp/brown-cowboy.png",
                 price: 12345,
-            }
-          })
-       }).then((resp) =>resp.json()).then(data=>{
-                    console.log(data);
-    });
- }
+                    }
+                })
+            }).then((resp) =>resp.json()).then(data=>{
+                            console.log(data);
+            });
+        }
 
       Put.onclick = () => {
                 fetch("http://localhost:8080/api/4").then(resp => resp.json()).then(data => {
