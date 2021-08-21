@@ -32,7 +32,25 @@
  <body>  
 
     <div class="container mt-4">
-        <button class="btn btn-primary mt-2" id="getAll">Get All Products</button>
+        <br>
+            
+            <button class="btn btn-primary mt-2" id="getAll">Get All Products</button>
+            <table class="u-full-width">
+                <thead>
+                  <tr>
+                    <th>Nombre Producto</th>
+                    <th>Imagen</th>
+                    <th>Precio</th>
+                    <th>Id</th>
+                  </tr>
+                </thead>
+                <tbody id="data">
+                </tbody>
+              </table>
+
+       </br>
+
+
         <button class="btn btn-primary mt-2" id="Post">Add/Post Product</button>
         <button class="btn btn-primary mt-2" id="Put">Update</button>
         <button class="btn btn-primary mt-2" id="Delete">Delete</button>
@@ -57,10 +75,25 @@
    
         getAll.onclick = () => {
 
-        fetch("http://localhost:8080/api").then(resp => resp.json()).then(data => {
-        console.log(data)
-        })
-       }
+        fetch("http://localhost:8080/api")
+        .then(resp => resp.json())
+        .then(data => mostrarData(data))
+        
+        const mostrarData = (data) => {
+            console.log(data)
+            let body = ''
+            for (i = 0; i < data.length; i++) {
+                body += `<tr><td>${data[i].name}</td><td>
+                         <tr><td>${data[i].imageUrl}</td><td>
+                         <tr><td>${data[i].price}</td><td>
+                         <tr><td>${data[i].id}</td><td>`
+          }
+          document.getElementById('data').innerHTML= body
+          }
+        }
+        
+        
+        
 
          getById.onclick = () => {
         fetch("http://localhost:8080/api/2").then(resp => resp.json()).then(data => {
@@ -98,7 +131,7 @@
                     console.log(data)
                 })
             }
-
+        
      
     </script>
 </body>
